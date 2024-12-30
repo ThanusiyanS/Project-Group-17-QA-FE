@@ -9,7 +9,7 @@ public class DriverFactory {
     // Singleton Pattern for WebDriver
     public static WebDriver getDriver() {
         if (driver == null) {
-            System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+            System.setProperty("webdriver.chrome.driver", "//Users//danurahathevanayagam//Downloads//chromedriver-mac-arm64//chromedriver");
             driver = new ChromeDriver();
             driver.manage().window().maximize();
         }

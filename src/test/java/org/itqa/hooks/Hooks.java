@@ -11,7 +11,7 @@ public class Hooks {
 
     @Before
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "/Users/danurahathevanayagam/Downloads/chromedriver-mac-arm64/chromedriver");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
     }

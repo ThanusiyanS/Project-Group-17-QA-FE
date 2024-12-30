@@ -19,7 +19,7 @@ public class navigationSteps {
     @Given("I am on the homepage")
     public void i_am_on_the_homepage() {
         // Setup ChromeDriver path explicitly if needed
-        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "/Users/danurahathevanayagam/Downloads/chromedriver-mac-arm64/chromedriver");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://uom.lk/");
