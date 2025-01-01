@@ -19,9 +19,10 @@ public class navigationSteps {
     @Given("I am on the homepage")
     public void i_am_on_the_homepage() {
         // Setup ChromeDriver path explicitly if needed
-        System.setProperty("webdriver.chrome.driver", "/Users/danurahathevanayagam/Downloads/chromedriver-mac-arm64/chromedriver");
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
+//        System.setProperty("webdriver.chrome.driver", "/Users/thanusiyans/Documents/University/L4S1/ITQA/chromedriver-mac-arm64/chromedriver");
+//        driver = new ChromeDriver();
+//        driver.manage().window().maximize();
+        driver = DriverFactory.getWebDriver();
         driver.get("https://uom.lk/");
     }
 
