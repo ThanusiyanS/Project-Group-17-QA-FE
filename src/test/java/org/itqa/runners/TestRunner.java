@@ -19,10 +19,6 @@ import org.testng.annotations.BeforeClass;
 public class TestRunner extends AbstractTestNGCucumberTests {
     @BeforeClass
     public void setUp() {
-//        DriverFactory.initializeDriver();
-        System.setProperty("webdriver.chrome.driver", "/Users/thanusiyans/Documents/University/L4S1/ITQA/chromedriver-mac-arm64/chromedriver");
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        DriverFactory.setWebDriver(driver);
+        DriverFactory.initializeDriver();
     }
 }

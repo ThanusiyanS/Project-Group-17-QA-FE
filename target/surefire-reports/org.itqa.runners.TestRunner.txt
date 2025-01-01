@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: org.itqa.runners.TestRunner
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 14.07 s -- in org.itqa.runners.TestRunner
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 23.36 s -- in org.itqa.runners.TestRunner
