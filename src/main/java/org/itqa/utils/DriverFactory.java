@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.io.File;
 import java.time.Duration;
 
 public class DriverFactory {
@@ -21,7 +22,7 @@ public class DriverFactory {
 
 
                 // CI-specific options
-                options.addArguments("--headless=new");
+//                options.addArguments("--headless=new");
                 options.addArguments("--window-size=1920,1080");
                 options.addArguments("--remote-allow-origins=*");
 
@@ -39,13 +40,9 @@ public class DriverFactory {
         DriverFactory.webDriver = webDriver;
     }
 
-//    public static WebDriver getWebDriver() {
-//        if (webDriver == null) {
-//            webDriver = new ChromeDriver();
-//            webDriver.manage().window().maximize();
-//        }
-//        return webDriver;
-//    }
+    public static WebDriver getWebDriver() {
+        return webDriver;
+    }
 
     public static void quitDriver() {
         if (webDriver != null) {
@@ -54,20 +51,14 @@ public class DriverFactory {
         }
     }
 
-    public static synchronized WebDriver getWebDriver() {
-        if (threadLocalDriver.get() == null) {
-            WebDriver driver = new ChromeDriver();
-            driver.manage().window().maximize();
-            threadLocalDriver.set(driver);
-        }
-        return threadLocalDriver.get();
-    }
+//    public static synchronized WebDriver getWebDriver() {
+//        if (threadLocalDriver.get() == null) {
+//            WebDriver driver = new ChromeDriver();
+//            driver.manage().window().maximize();
+//            threadLocalDriver.set(driver);
+//        }
+//        return threadLocalDriver.get();
+//    }
 
-    public static synchronized void quitWebDriver() {
-        if (threadLocalDriver.get() != null) {
-            threadLocalDriver.get().quit();
-            threadLocalDriver.remove();
-        }
-    }
 
 }

@@ -8,10 +8,17 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.time.Duration;
 
 import static org.testng.Assert.*;
 
-public class AddToCartAndCheckoutSteps {
+public class AddAndRemoveFromCartSteps {
+    private static final Logger log = LoggerFactory.getLogger(AddAndRemoveFromCartSteps.class);
     WebDriver driver;
 
     @Given("I launch the browser and navigate to test automation website")
@@ -40,16 +47,13 @@ public class AddToCartAndCheckoutSteps {
         firstProduct.click();
     }
 
-    @When("I click 'Continue Shopping' button")
-    public void iClickContinueShoppingButton() {
-        WebElement continueShopping = driver.findElement(By.xpath("//*[@id=\"cartModal\"]/div/div/div[3]/button"));
-        assertTrue(continueShopping.isDisplayed());
-        continueShopping.click();
-    }
-
     @When("I click 'View Cart' button")
     public void iClickViewCartButton() {
-        driver.findElement(By.xpath("//*[@id=\"cartModal\"]/div/div/div[2]/p[2]/a/u")).click();
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(2));
+        WebElement viewCart = wait.until(
+                ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"cartModal\"]/div/div/div[2]/p[2]/a"))
+        );
+        viewCart.click();
     }
 
     @Then("I verify the product is added to the cart")
@@ -68,4 +72,36 @@ public class AddToCartAndCheckoutSteps {
         assertEquals("1", quantity);
         assertEquals("Rs. 500", totalPrice);
     }
+
+    @Given("I click 'Cart' button")
+    public void iClickCartButton() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,-500)"); // Scroll down to products
+
+        driver.findElement(By.xpath("//*[@id=\"header\"]/div/div/div/div[2]/div/ul/li[3]/a")).click();
+    }
+
+    @Given("I verify that cart page is displayed")
+    public void iVerifyThatCartPageIsDisplayed() {
+        WebElement cartHeader = driver.findElement(By.xpath("//*[@id=\"cart_items\"]/div/div[1]/ol/li[2]"));
+        assertTrue(cartHeader.isDisplayed());
+    }
+
+    @When("I click the 'Remove' button for the product")
+    public void iClickTheRemoveButtonForTheProduct() {
+        driver.findElement(By.xpath("//*[@id=\"product-1\"]/td[6]/a")).click(); // Remove item
+    }
+
+    @Then("I verify the product is removed from the cart")
+    public void iVerifyTheProductIsRemovedFromTheCart() {
+        WebElement emptyCartMessage = driver.findElement(By.xpath("//*[@id=\"product-1\"]"));
+        assertTrue(emptyCartMessage.isDisplayed());
+    }
+
+    @Given("I verify the product is added to the cart before the remove")
+    public void iVerifyProductIsAddedToCartBeforeTheRemove() {
+        WebElement productInCart = driver.findElement(By.xpath("//*[@id=\"product-1\"]"));
+        assertTrue(productInCart.isDisplayed());
+    }
+
 }
