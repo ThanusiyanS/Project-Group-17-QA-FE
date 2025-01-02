@@ -8,6 +8,9 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.time.Duration;
 
 public class DriverFactory {
+
+    private static final ThreadLocal<WebDriver> threadLocalDriver = new ThreadLocal<>();
+
     private static WebDriver webDriver;
 
     // Singleton Pattern for WebDriver
@@ -36,9 +39,13 @@ public class DriverFactory {
         DriverFactory.webDriver = webDriver;
     }
 
-    public static WebDriver getWebDriver() {
-        return webDriver;
-    }
+//    public static WebDriver getWebDriver() {
+//        if (webDriver == null) {
+//            webDriver = new ChromeDriver();
+//            webDriver.manage().window().maximize();
+//        }
+//        return webDriver;
+//    }
 
     public static void quitDriver() {
         if (webDriver != null) {
@@ -46,4 +53,21 @@ public class DriverFactory {
             webDriver = null;
         }
     }
+
+    public static synchronized WebDriver getWebDriver() {
+        if (threadLocalDriver.get() == null) {
+            WebDriver driver = new ChromeDriver();
+            driver.manage().window().maximize();
+            threadLocalDriver.set(driver);
+        }
+        return threadLocalDriver.get();
+    }
+
+    public static synchronized void quitWebDriver() {
+        if (threadLocalDriver.get() != null) {
+            threadLocalDriver.get().quit();
+            threadLocalDriver.remove();
+        }
+    }
+
 }

@@ -42,7 +42,7 @@ public class LoginSteps {
     public void iShouldSeeAnErrorMessage() {
         String error = loginPage.getErrorMessage();
         assertEquals("Your email or password is incorrect!", error);
-        driver.quit();
+       // driver.quit();
     }
 
     @When("I enter invalid username {string} and password {string}")
