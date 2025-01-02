@@ -15,7 +15,7 @@ public class Hooks {
     @After
     public void tearDown() {
         if (DriverFactory.getWebDriver() != null) {
-            DriverFactory.getWebDriver().quit();
+          DriverFactory.quitDriver();
         }
     }
 }

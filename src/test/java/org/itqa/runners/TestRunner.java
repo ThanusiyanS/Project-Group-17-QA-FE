@@ -6,6 +6,7 @@ import io.cucumber.testng.CucumberOptions;
 import org.itqa.utils.DriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 @CucumberOptions(
@@ -20,5 +21,10 @@ public class TestRunner extends AbstractTestNGCucumberTests {
     @BeforeClass
     public void setUp() {
         DriverFactory.initializeDriver();
+    }
+
+    @AfterClass
+    public void tearDown(){
+        DriverFactory.quitDriver();
     }
 }
