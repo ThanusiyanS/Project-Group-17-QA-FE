@@ -3,6 +3,11 @@ package org.itqa.steps;
 import io.cucumber.java.en.*;
 import org.itqa.utils.DriverFactory;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+
 import static org.testng.Assert.*;
 
 
@@ -12,6 +17,8 @@ public class ViewCategoryProducts {
 
     @Given("I verify that categories are visible on the left sidebar")
     public void iVerifyCategoriesVisible() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,500)");
         WebElement categoriesSidebar = driver.findElement(By.xpath("/html/body/section[2]/div[1]/div/div[1]/div/h2"));
         assertTrue(categoriesSidebar.isDisplayed(), "Categories sidebar is not visible.");
     }
@@ -24,7 +31,11 @@ public class ViewCategoryProducts {
 
     @When("I click on the Dress link under {string} category")
     public void iClickOnSubCategory(String category) {
-        WebElement subCategoryLink = driver.findElement(By.xpath("//*[@id=\""+category+"\"]/div/ul/li[1]/a"));
+         // Scroll down to products
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
+        WebElement subCategoryLink = wait.until(
+                ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"Women\"]/div/ul/li[1]/a"))
+        );
         subCategoryLink.click();
     }
 
