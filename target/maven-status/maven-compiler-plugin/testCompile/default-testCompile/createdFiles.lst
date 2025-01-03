@@ -2,8 +2,12 @@ org/itqa/utills/CommonOp.class
 org/itqa/steps/AddAndRemoveFromCartSteps.class
 org/itqa/steps/ViewCategoryProducts.class
 org/itqa/hooks/Hooks.class
+org/itqa/steps/AddToCartByRecommendSteps.class
 org/itqa/steps/LoginSteps.class
 org/itqa/runners/TestRunner.class
 org/itqa/utills/Constants.class
+org/itqa/steps/VerifyAllProductsAndDetailsSteps.class
+org/itqa/steps/ScrollFunctionalitySteps.class
+org/itqa/steps/VerifySubscriptionInCartSteps.class
 org/itqa/steps/SubmitContactUsFormSteps.class
 org/itqa/steps/addReviewOnProductSteps.class

@@ -1,9 +1,13 @@
 /Users/thanusiyans/Documents/University/L4S1/ITQA/Project-Group-17-QA-FE/src/test/java/org/itqa/steps/addReviewOnProductSteps.java
-/Users/thanusiyans/Documents/University/L4S1/ITQA/Project-Group-17-QA-FE/src/test/java/org/itqa/utills/CommonOp.java
+/Users/thanusiyans/Documents/University/L4S1/ITQA/Project-Group-17-QA-FE/src/test/java/org/itqa/steps/AddToCartByRecommendSteps.java
 /Users/thanusiyans/Documents/University/L4S1/ITQA/Project-Group-17-QA-FE/src/test/java/org/itqa/steps/AddAndRemoveFromCartSteps.java
-/Users/thanusiyans/Documents/University/L4S1/ITQA/Project-Group-17-QA-FE/src/test/java/org/itqa/steps/ViewCategoryProducts.java
 /Users/thanusiyans/Documents/University/L4S1/ITQA/Project-Group-17-QA-FE/src/test/java/org/itqa/steps/LoginSteps.java
 /Users/thanusiyans/Documents/University/L4S1/ITQA/Project-Group-17-QA-FE/src/test/java/org/itqa/steps/SubmitContactUsFormSteps.java
 /Users/thanusiyans/Documents/University/L4S1/ITQA/Project-Group-17-QA-FE/src/test/java/org/itqa/hooks/Hooks.java
 /Users/thanusiyans/Documents/University/L4S1/ITQA/Project-Group-17-QA-FE/src/test/java/org/itqa/runners/TestRunner.java
 /Users/thanusiyans/Documents/University/L4S1/ITQA/Project-Group-17-QA-FE/src/test/java/org/itqa/utills/Constants.java
+/Users/thanusiyans/Documents/University/L4S1/ITQA/Project-Group-17-QA-FE/src/test/java/org/itqa/steps/VerifySubscriptionInCartSteps.java
+/Users/thanusiyans/Documents/University/L4S1/ITQA/Project-Group-17-QA-FE/src/test/java/org/itqa/steps/VerifyAllProductsAndDetailsSteps.java
+/Users/thanusiyans/Documents/University/L4S1/ITQA/Project-Group-17-QA-FE/src/test/java/org/itqa/utills/CommonOp.java
+/Users/thanusiyans/Documents/University/L4S1/ITQA/Project-Group-17-QA-FE/src/test/java/org/itqa/steps/ViewCategoryProducts.java
+/Users/thanusiyans/Documents/University/L4S1/ITQA/Project-Group-17-QA-FE/src/test/java/org/itqa/steps/ScrollFunctionalitySteps.java
