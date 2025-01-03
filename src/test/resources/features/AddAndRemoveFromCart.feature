@@ -1,6 +1,4 @@
-Feature: Add Product to Cart and Verify Details
-
-
+Feature: Add and Remove Product to Cart and Verify Details
   Scenario: Add a product to the cart and verify details
     Given I launch the browser and navigate to test automation website
     And I verify that the home page is visible successfully
