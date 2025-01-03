@@ -8,6 +8,10 @@ import org.itqa.utils.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
@@ -26,44 +30,41 @@ public class ProductSearchSteps {
         String actualTitle = driver.getTitle();
         assertEquals(expectedTitle, actualTitle);
     }
-    @When("I click on the \"Products\" menu in the navigation bar")
-    public void iClickOnTheProductsMenu() {
-        // Use a more robust and readable XPath to locate the "Products" menu
-        WebElement productsMenu = driver.findElement(By.xpath("//nav//a[contains(text(),'Products')]"));
-    }
 
+    @When("I click on the Products button in home page")
+    public void iClickOnTheProductsButton() {
+        driver.findElement(By.xpath("//*[@id=\"header\"]/div/div/div/div[2]/div/ul/li[2]/a")).click();
+    }
 
     // Step for verifying navigation to the "ALL PRODUCTS" page
     @And("I verify that the user is navigated to the \"ALL PRODUCTS\" page successfully")
     public void iVerifyUserIsNavigatedToAllProductsPage() {
         String currentUrl = driver.getCurrentUrl();
-        assertEquals(currentUrl, "https://example.com/all-products"); // replace with actual URL
+        assertEquals(currentUrl, "https://www.automationexercise.com/products"); // replace with actual URL
     }
 
     // Step for entering the product name into the search input field
     @When("I enter a product name in the search input")
     public void iEnterProductNameInSearchInput() {
-        WebElement searchInput = driver.findElement(By.id("search-input")); // replace with actual search input field
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
 
+        WebElement searchInput = driver.findElement(By.xpath("//*[@id=\"search_product\"]")); // replace with actual search input field
+        searchInput.clear();
+        searchInput.sendKeys("T-Shirt");
     }
 
     // Step for clicking the "Search" button
-    @When("I click the \"Search\" button")
+    @When("I click the Search button")
     public void iClickOnTheSearchButton() {
-        driver.findElement(By.xpath("//button[@id='search-button']")).click(); // replace with actual button
+        driver.findElement(By.xpath("//*[@id=\"submit_search\"]")).click(); // replace with actual button
     }
 
     // Step for verifying that the "SEARCHED PRODUCTS" section is visible
-    @Then("I verify that the \"SEARCHED PRODUCTS\" section is visible")
+    @Then("I verify that the SEARCHED PRODUCTS section is visible")
     public void iVerifySearchedProductsSectionIsVisible() {
-        WebElement searchedProductsSection = driver.findElement(By.id("searched-products")); // replace with actual section ID
-
+        WebElement searchedProductsSection = driver.findElement(By.xpath("/html/body/section[2]/div[1]/div/div[2]/div/h2")); // replace with actual section ID
+        assertTrue(searchedProductsSection.isDisplayed(),"Not displayed");
     }
 
     // Step for verifying that all products related to the search are visible
-    @And("I verify that all the products related to the search are visible")
-    public void iVerifyAllProductsRelatedToSearchAreVisible() {
-        WebElement productList = driver.findElement(By.cssSelector(".product-item")); // replace with the correct selector
-        assertTrue(productList.isDisplayed(), "No products related to the search are visible");
-}
 }

@@ -8,6 +8,12 @@ import org.itqa.utils.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+
 import static org.testng.Assert.assertEquals;
 
 public class viewCategorySteps {
@@ -39,7 +45,11 @@ public class viewCategorySteps {
 
     @When("I  Click on 'Dress' category link under 'Women' category")
     public void iClickOnTheTops() {
-        driver.findElement(By.xpath("//body/section[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/ul[1]/li[1]/a[1]")).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
+        WebElement subCategoryLink = wait.until(
+                ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"Women\"]/div/ul/li[1]/a"))
+        );
+        subCategoryLink.click();
     }
 
 
