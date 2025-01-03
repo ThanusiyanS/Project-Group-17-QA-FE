@@ -32,7 +32,7 @@ public class AddToCartByRecommendSteps {
     @When("I click on 'Add To Cart' on a recommended product")
     public void iClickAddToCartOnRecommendedProduct() {
         // Locate the 'Add To Cart' button for a recommended product
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
         WebElement addToCartButton = driver.findElement(By.xpath("/html/body/section[2]/div[1]/div/div[2]/div[2]/div/div/div[2]/div[1]/div/div/div/a"));
         addToCartButton.click();
     }
