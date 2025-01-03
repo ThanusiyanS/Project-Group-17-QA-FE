@@ -54,7 +54,7 @@ public class VerifyAllProductsAndDetailsSteps {
     @Then("I verify that the user is navigated to the product detail page")
     public void iVerifyThatTheUserIsNavigatedToTheProductDetailPage() {
         // Wait for the product information section to be visible
-        WebElement productDetail = new WebDriverWait(driver, Duration.ofSeconds(10))
+        WebElement productDetail = new WebDriverWait(driver, Duration.ofSeconds(2))
                 .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/section/div/div/div[2]/div[2]/div[2]/div")));
         Assert.assertTrue(productDetail.isDisplayed(), "User is not navigated to the product detail page.");
 
