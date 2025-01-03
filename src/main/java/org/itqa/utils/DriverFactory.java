@@ -9,29 +9,19 @@ import java.io.File;
 import java.time.Duration;
 
 public class DriverFactory {
-
-    private static final ThreadLocal<WebDriver> threadLocalDriver = new ThreadLocal<>();
-
     private static WebDriver webDriver;
 
     // Singleton Pattern for WebDriver
-
     public static void initializeDriver() {
         if (webDriver == null) {
             ChromeOptions options = new ChromeOptions();
-
-
-                // CI-specific options
-//                options.addArguments("--headless=new");
-                options.addArguments("--window-size=1920,1080");
-                options.addArguments("--remote-allow-origins=*");
-
-
+            // CI-specific options
+            options.addArguments("--headless=new");
+            options.addArguments("--window-size=1920,1080");
+            options.addArguments("--remote-allow-origins=*");
             WebDriverManager.chromedriver().setup();
             WebDriver webDriver = new ChromeDriver(options);
             webDriver.manage().window().maximize();
-            webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-            webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
             setWebDriver(webDriver);
         }
     }
@@ -51,14 +41,6 @@ public class DriverFactory {
         }
     }
 
-//    public static synchronized WebDriver getWebDriver() {
-//        if (threadLocalDriver.get() == null) {
-//            WebDriver driver = new ChromeDriver();
-//            driver.manage().window().maximize();
-//            threadLocalDriver.set(driver);
-//        }
-//        return threadLocalDriver.get();
-//    }
 
 
 }
